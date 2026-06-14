@@ -10,7 +10,31 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 class AdminController extends Controller
 {
-    public function index(){
-        return view('admin.index');
+    public function index(Request $request){
+        $filter=Appointment::with('user');
+        if($request->filled('status')){
+            $filter->where('status',$request->status);
+        }
+       $appointments=$filter->latest()->get();
+        return view('admin.index',compact('appointments'));
+    }
+    public function updateStatus(Request $request,Appointment $appointment){
+        $request->validate([
+            'status'=>'required',
+        ],
+        [
+        'status.required'=>'укажите статус',
+        ]);
+        $allowed=[
+        'Новая'=>['Идет обучение'],
+        'Идет обучение'=>['Обучение завершено'],
+        'Обучение завершено'=>[],
+        ];
+        if(!in_array($request->status,$allowed[$appointment->status])){
+            return back()->with('error','Недопустимый переход статуса');
+        }
+        $appointment->status=$request->status;
+        $appointment->save();
+        return redirect()->route('admin.index')->with('success','Статус обновлен');
     }
 }

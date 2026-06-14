@@ -20,7 +20,7 @@ Route::middleware(['auth'])->group(function(){
       Route::post('/appointments/store', [AppointmentController::class,'store'])->name('appointments.store');
 });
 Route::middleware(['auth','admin'])->group(function(){
-    Route::get('/admin', [AppointmentController::class,'index'])->name('admin.index');
-    Route::put('/admin/updateStatus', [AppointmentController::class,'updateStatus'])->name('admin.updateStatus');
+    Route::get('/admin', [AdminController::class,'index'])->name('admin.index');
+    Route::put('/admin/updateStatus/{appointment}', [AdminController::class,'updateStatus'])->name('admin.updateStatus');
 });
 Route::post('/logout', [AuthController::class,'logout'])->name('logout');
