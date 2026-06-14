@@ -19,14 +19,15 @@ class AppointmentController extends Controller
     }
     public function store(Request $request){
     $data=$request->validate([
-       'language'=>'',
-       'date'=>'',
-       'paymethod'=>'',
+       'language'=>'required',
+       'date'=>'required|after:yesterday',
+       'paymethod'=>'required',
     ],
     [
-'language'=>'',
-       'date'=>'',
-       'paymethod'=>'',
+    'language.required'=>'Укажите иностранный язык',
+       'date.required'=>'Укажите дату начала обучения',
+        'date.after'=>'Дата уже прошла',
+       'paymethod.required'=>'Укажите подходящий способ оплаты',
     ]);
     Appointment::create([
     'user_id'=>Auth::id(),
@@ -35,6 +36,6 @@ class AppointmentController extends Controller
        'paymethod'=>$data['paymethod'],
        'status'=>'Новая',
     ]);
-
+    return redirect()->route('appointments.index')->with('success','Заявка создана');
     }
 }

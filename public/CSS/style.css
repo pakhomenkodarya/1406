@@ -1,8 +1,4 @@
 /*fonts*/
-Заголовок (H1) 36px 
-Заголовок (H2-H3) 24px / 18px PT Sans Bold
-Основной текст 16px PT Sans
-Вспомогательные тексты 12px PT Sans Italic
 @font-face {
     font-family: 'PTSansBold';
     src: url(../fontsPT_SansPTSans-Bold.ttf);
@@ -91,4 +87,9 @@ font-family: 'PTSansItalic';
     text-align: center;
     margin: 0;
     padding: 40px;
+}
+.centerblock{
+        display: flex;
+    flex-direction: column;
+    align-items: center;
 }
