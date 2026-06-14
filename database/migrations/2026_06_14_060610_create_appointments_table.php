@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->string('language');
+            $table->date('date');
+             $table->enum('paymethod',['предоплата по QR-коду','оплата картой МИР','постоплата в офисе организации']);
+             $table->enum('status',['Новая','Идет обучение','Обучение завершено'])->default('Новая');
             $table->timestamps();
         });
     }

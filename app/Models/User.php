@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
+use App\Models\Appointment;
+use App\Models\User;
+use App\Models\Review;
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -19,11 +21,16 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
-        'email',
+        'login',
         'password',
+        'name',
+        'tel',
+        'email',
+        'role',
     ];
-
+    public function appointments(){
+        $this->hasMany(Appointment::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
