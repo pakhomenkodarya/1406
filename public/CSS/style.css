@@ -1,0 +1,94 @@
+/*fonts*/
+Заголовок (H1) 36px 
+Заголовок (H2-H3) 24px / 18px PT Sans Bold
+Основной текст 16px PT Sans
+Вспомогательные тексты 12px PT Sans Italic
+@font-face {
+    font-family: 'PTSansBold';
+    src: url(../fontsPT_SansPTSans-Bold.ttf);
+}
+@font-face {
+    font-family: 'PTSans';
+    src: url(../public/fonts/PT_Sans/PTSans-Regular.ttf);
+}
+@font-face {
+    font-family: 'PTSansItalic';
+    src: url(../fonts/PT_Sans/PTSans-BoldItalic.ttf);
+}
+/*colors*/
+:root{
+    --blue:#007bff;
+    --dark-blue:#0d47a1;
+    --grey:#6c757d;
+    --background:#f8f9fa;
+    --accent:#ffffff;
+}
+/*body*/
+*{
+font-family: 'PTSans';
+font-size: 16px;
+}
+body{
+    background-color: var(--background);
+    color: var(--dark-blue);
+}
+/*header*/
+header,footer{
+    color: var(--accent);
+    background-color: var(--blue);
+}
+h1{
+    font-family: 'PTSansBold';
+    font-size: 36px;
+    color: var(--accent);
+}
+h2{
+    margin: 20px;
+     font-family: 'PTSansBold';
+    font-size: 24px;
+    text-align: center;
+}
+h3{
+    padding: 10px;
+     font-family: 'PTSansBold';
+    font-size: 18px;
+    text-align: center;
+}
+form{
+    display: flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+input,select,.form-select,.form-input,.form-control{
+    width: 300px;
+}
+.btn{
+    margin: 10px;
+}
+.centrp{
+    text-align: center;
+}
+
+.a{
+    color: var(--dark-blue);
+    text-decoration: none;
+}
+.a:hover{
+    color: var(--blue);
+    text-decoration: none;
+}
+.footerp{
+    padding: 5px;
+color: var(--accent);
+text-align: center;
+}
+.footerpaccent{
+    color: var(--accent);
+font-family: 'PTSansItalic';
+    font-size: 12px;
+    text-align: center;
+    margin: 0;
+    padding: 40px;
+}
